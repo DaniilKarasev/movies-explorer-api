@@ -3,12 +3,9 @@ const { celebrate, Joi, Segments } = require('celebrate');
 const validator = require('validator');
 
 const {
-  getUsers,
   getCurrentUserInfo,
   editUserProfile,
 } = require('../controllers/users');
-
-router.get('/', getUsers);
 
 router.get('/me', getCurrentUserInfo);
 

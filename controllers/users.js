@@ -74,14 +74,6 @@ module.exports.signout = (req, res, next) => {
   }
 };
 
-module.exports.getUsers = (req, res, next) => {
-  User.find({})
-    .then((users) => {
-      res.send(users);
-    })
-    .catch(() => next(new ServerError('Ошибка на стороне сервера')));
-};
-
 module.exports.getCurrentUserInfo = (req, res, next) => {
   User.findById(req.user)
     .then((user) => {
