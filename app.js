@@ -4,14 +4,18 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const helmet = require('helmet');
 
 const { errors } = require('celebrate');
 const { errorHandler } = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { limiter } = require('./middlewares/limiter');
 
 const { PORT = 3000 } = process.env;
 
 const app = express();
+app.use(limiter);
+app.use(helmet());
 
 const options = {
   origin: [
